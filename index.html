@@ -1,558 +1,224 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>交易者心境｜华尔街不告诉你的秘密！</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>投资思想与原则 - 作品集 | Exson Art</title>
     <style>
-        /* 全局样式重置与基础设置 */
-        *, *::before, *::after {
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-text: #7f8c8d;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+        }
+
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-        
-        :root {
-            --primary: #1a73e8;
-            --primary-dark: #0d47a1;
-            --secondary: #ff9800;
-            --secondary-light: #fff3cd;
-            --accent-gold: #FFD700;
-            --accent-purple: #8A2BE2;
-            --accent-green: #3CB371;
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-light: #f9fafb;
-            --white: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
-            --border-radius: 8px;
-            --transition: all 0.3s ease;
-        }
-        
+
         body {
-            font-family: 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.7;
-            font-size: 18px;
-            scroll-behavior: smooth;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
         }
-        
-        /* 顶部导航栏 */
-        .navbar {
-            position: sticky;
-            top: 0;
-            background-color: var(--white);
+
+        /* 主容器 */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--card-bg);
             box-shadow: var(--shadow);
-            z-index: 1000;
-            padding: 1rem 0;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
         }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
+
+        .container:hover {
+            box-shadow: var(--hover-shadow);
         }
-        
-        .logo {
-            font-size: 1.5rem;
+
+        /* 头部样式 */
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        header h1 {
+            font-size: 2.4em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
             font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+
+        header p {
+            font-size: 1.1em;
+            color: var(--light-text);
+            font-style: italic;
         }
-        
-        .nav-links a {
+
+        /* 作品集列表 */
+        .portfolio-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .portfolio-item {
+            margin-bottom: 15px;
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--border-color);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateX(5px);
+        }
+
+        .portfolio-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .portfolio-item a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--primary-color);
+            font-size: 1.2em;
             font-weight: 500;
             transition: var(--transition);
+            display: block;
         }
-        
-        .nav-links a:hover {
-            color: var(--primary);
+
+        .portfolio-item a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
         }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-dark);
-        }
-        
-        /* 头部区域 */
-        header {
-            position: relative;
-            padding: 4rem 0;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            margin-bottom: 3rem;
-            overflow: hidden;
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .header-subtitle {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-        
-        .header-cta {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: var(--text-dark);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .header-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-        }
-        
-        /* 内容区域 */
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem 3rem;
-        }
-        
-        .section {
-            background-color: var(--white);
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-left: 5px solid;
-        }
-        
-        .section:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-5px);
-        }
-        
-        .highlight {
-            background-color: var(--secondary-light);
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--secondary);
-            transition: var(--transition);
-        }
-        
-        .highlight:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-5px);
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        h2 i {
-            color: var(--secondary);
-        }
-        
-        h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--primary-dark);
-        }
-        
-        p {
-            margin-bottom: 1.5rem;
-        }
-        
-        /* 列表样式 */
-        ul, ol {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-        
-        ul li, ol li {
-            margin-bottom: 0.8rem;
-            padding-left: 0.5rem;
-        }
-        
-        ul li::marker {
-            color: var(--secondary);
-        }
-        
-        ol li::marker {
-            color: var(--primary);
-            font-weight: bold;
-        }
-        
-        /* 引用样式 */
-        blockquote {
-            border-left: 4px solid var(--primary);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--text-light);
-        }
-        
-        /* 底部区域 */
+
+        /* 脚注 */
         footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 3rem 0;
             text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--light-text);
+            font-size: 0.9em;
         }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-        }
-        
-        .copyright {
-            margin-top: 2rem;
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-        
-        /* 返回顶部按钮 */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary);
-            color: var(--white);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-        
+
         /* 响应式设计 */
-        @media (max-width: 992px) {
-            h1 {
-                font-size: 2.4rem;
-            }
-            
-            .header-subtitle {
-                font-size: 1.2rem;
-            }
-        }
-        
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .container {
+                margin: 20px;
+                padding: 20px;
             }
-            
-            .mobile-menu-btn {
-                display: block;
+
+            header h1 {
+                font-size: 2em;
             }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.7rem;
-            }
-            
-            h3 {
-                font-size: 1.4rem;
-            }
-            
-            .section, .highlight {
-                padding: 2rem;
-            }
-            
-            .header-content, .content, .footer-content {
-                padding: 0 1.5rem;
+
+            .portfolio-item a {
+                font-size: 1.1em;
             }
         }
-        
+
         @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
+            .container {
+                margin: 10px;
+                padding: 15px;
             }
-            
-            h2 {
-                font-size: 1.5rem;
+
+            header h1 {
+                font-size: 1.6em;
             }
-            
-            h3 {
-                font-size: 1.3rem;
+
+            header p {
+                font-size: 1em;
             }
-            
-            .section, .highlight {
-                padding: 1.5rem;
-            }
-            
-            .header-content, .content, .footer-content {
-                padding: 0 1rem;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
+
+            .portfolio-item a {
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-chart-line"></i>
-                <span>交易者心境</span>
-            </div>
-            <div class="nav-links">
-                <a href="#principles">核心法则</a>
-                <a href="#quotes">名句精华</a>
-                <a href="#action">行动方案</a>
-                <a href="#summary">核心总结</a>
-            </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
+    <div class="container">
+        <header>
+            <h1>投资思想与原则</h1>
+            <p>—— 专业交易与个人成长作品集</p>
+        </header>
 
-    <!-- 头部区域 -->
-    <header>
-        <div class="header-content">
-            <h1>交易者心境｜华尔街不告诉你的秘密！</h1>
-            <p class="header-subtitle">Brent Penfold 13 条核心交易法则首次公开，趋势跟随+止损纪律+心理掌控，让普通人也能稳健翻倍盈利，立刻点击学习！</p>
-        </div>
-    </header>
-
-    <!-- 主要内容区域 -->
-    <div class="content">
-        <section class="section" id="introduction">
-            <h2><i class="fas fa-lock-open"></i> 华尔街不告诉你的秘密！</h2>
-            <p>你是否曾在市场里一次次追涨杀跌，最终满手亏损？是否常常在止损和持仓之间左右为难，最后看着利润蒸发？你并不孤单。绝大多数交易者在刚入市时，都会陷入情绪化操作、缺乏风险管理的循环。但今天，我们要带你走进华尔街不轻易透露的秘密——来自拥有40年交易经验的传奇交易者 Brent Penfold 的 13 条核心交易法则。</p>
-            <p>这些法则，并不是复杂的指标公式，而是普遍适用的原则。它们强调风险控制、纪律执行、趋势跟随和心理掌控。只要你能真正理解并落实，你就能在股市、期货和外汇市场中实现稳健盈利。</p>
-        </section>
-
-        <section class="section" id="author">
-            <h2><i class="fas fa-user-tie"></i> 作者背景：Brent Penfold 的传奇之路</h2>
-            <p>Brent Penfold 的交易生涯始于上世纪 80 年代，他曾在美国银行（Bank of America）担任机构交易员，深度参与全球市场的实际操作。如今，他在澳大利亚悉尼经营自己的公司 Brent Penfold Futures Pty Ltd，专注全球指数、外汇与商品期货的系统化交易。</p>
-            <p>他的交易风格以纪律化的趋势跟随和严格的风险控制著称。他不仅是一位实战交易员，更是一位交易教育者。通过培训课程与著作，他不断强调"交易成功的普遍原则"，尤其在其代表作《The Universal Principles of Successful Trading》中，系统总结了所有市场都适用的核心规则。</p>
-            <p>Brent Penfold 被誉为交易教育领域的思想领袖，他的理念打破了"圣杯指标"的幻象，指出成功依赖的不是预测市场，而是遵守原则。</p>
-        </section>
-
-        <section class="highlight" id="principles">
-            <h2><i class="fas fa-star"></i> Brent Penfold 的 13 条核心交易法则</h2>
-            <ol>
-                <li>风险优先，利润次之</li>
-                <li>系统化交易，避免情绪化</li>
-                <li>趋势是朋友</li>
-                <li>资金管理不可忽视</li>
-                <li>止损必不可少</li>
-                <li>接受亏损，避免报复性交易</li>
-                <li>保持耐心</li>
-                <li>不断学习与改进</li>
-                <li>风险调整后的收益为衡量标准</li>
-                <li>心理素质决定交易成败</li>
-                <li>保持交易记录与复盘</li>
-                <li>遵循市场而非预测市场</li>
-                <li>普遍原则高于工具</li>
-            </ol>
-        </section>
-
-        <section class="section" id="quotes">
-            <h2><i class="fas fa-quote-left"></i> 名句精华（结合交易心理）</h2>
-            <ul>
-                <li>"市场无法预测，但风险永远可以管理。"</li>
-                <li>"止损不是失败，而是你最好的保险。"</li>
-                <li>"盈利来自纪律，不来自运气。"</li>
-                <li>"市场不欠你盈利，你只能向规则负责。"</li>
-                <li>"系统不会消除亏损，但能让你长期赢。"</li>
-                <li>"工具只是辅助，原则才是核心。"</li>
-                <li>"恐惧和贪婪打败了 90% 的交易者。"</li>
-                <li>"复盘不是可选项，而是成长的必经之路。"</li>
-                <li>"真正的自由来自风险控制。"</li>
-                <li>"市场不会因为你的希望改变，它只会奖励顺势的人。"</li>
+        <main>
+            <ul class="portfolio-list">
+                <li class="portfolio-item">
+                    <a href="wsgg.html" target="_blank">
+                        WSGG - 华尔街幽灵的礼物
+                    </a>
+                </li>
+                <li class="portfolio-item">
+                    <a href="tps.html" target="_blank">
+                        TPS - 交易原则
+                    </a>
+                </li>
+                <li class="portfolio-item">
+                    <a href="bp13.html" target="_blank">
+                        Brent Penfold 13 条核心交易法则
+                    </a>
+                </li>
+                <li class="portfolio-item">
+                    <a href="upst.html" target="_blank">
+                        UPST - 成功的交易的普遍原则
+                    </a>
+                </li>
+                <li class="portfolio-item">
+                    <a href="rm.html" target="_blank">
+                        Record Management - 持续记录自己，可以改变你的交易命运｜从这 5 个记录开始重启人生
+                    </a>
+                </li>
+                <li class="portfolio-item">
+                    <a href="stoic.html" target="_blank">
+                        The Daily Stoic 【掌控思想，行动制胜】
+                    </a>
+                </li>
+                <li class="portfolio-item">
+                    <a href="tl.html" target="_blank">
+                        The Laws of Trading - 市场不欠你任何机会
+                    </a>
+                </li>
+                <li class="portfolio-item">
+                    <a href="time.html" target="_blank">
+                        Time - 时间管理大师
+                    </a>
+                </li>
             </ul>
-        </section>
+        </main>
 
-        <section class="section" id="action">
-            <h2><i class="fas fa-tasks"></i> 行动方案：如何落实这 13 条法则</h2>
-            <ul>
-                <li>建立交易计划：写下入场、出场、止损、仓位规则，每次交易都严格遵守。</li>
-                <li>设定风险参数：单笔风险不超过总资金的 1–2%，绝不孤注一掷。</li>
-                <li>执行止损：一旦触及止损点，立即平仓，杜绝侥幸心理。</li>
-                <li>培养交易日志习惯：记录交易逻辑、心理状态和结果，定期复盘优化。</li>
-                <li>顺势而为：确认趋势后才介入，避免逆势猜底摸顶。</li>
-                <li>控制情绪：制定规则并让自己服从规则，避免情绪化操作。</li>
-                <li>定期学习：读书、复盘、学习新策略，让系统不断进化。</li>
-                <li>长期心态：目标不是快速翻倍，而是长期稳健积累。</li>
-            </ul>
-        </section>
-
-        <section class="highlight" id="summary">
-            <h2><i class="fas fa-graduation-cap"></i> 核心总结</h2>
-            <p>Brent Penfold 的 13 条交易原则告诉我们：交易不是寻找圣杯，也不是预测未来，而是用纪律和原则活下去。只要你把风险放在第一位，坚持系统化，跟随趋势，保持耐心和心理素质，你就能在任何市场生存下来。这些法则，是通往稳健盈利的钥匙。它们不是华丽的口号，而是经受时间和市场考验的真理。</p>
-        </section>
-
-        <section class="section" id="call-to-action">
-            <h2><i class="fas fa-bullhorn"></i> 行动号召</h2>
-            <p>如果你希望自己的交易不再盲目，而是走向稳健，请立即开始：</p>
-            <ul>
-                <li>写下你的交易计划，并在下一笔交易中严格执行。</li>
-                <li>给自己设定固定风险参数，保护本金。</li>
-                <li>从今天起养成写交易日志和复盘的习惯。</li>
-                <li>最重要的是，把"风险优先"写在心里，永远不要忘记。</li>
-            </ul>
-        </section>
-
-        <section class="section" id="conclusion">
-            <h2><i class="fas fa-flag-checkered"></i> 结尾与频道引导</h2>
-            <p>交易之路并不容易，但规则就是明灯。掌握这 13 条核心法则，你也能在市场里稳健成长。</p>
-            <blockquote>
-                "成功的交易不是关于预测未来，而是关于管理风险和管理自己。"
-            </blockquote>
-        </section>
+        <footer>
+            <p>&copy; 2025 Exson Art. 版权所有.</p>
+        </footer>
     </div>
-
-    <!-- 底部区域 -->
-    <footer>
-        <div class="footer-content">
-            <h3>交易者心境</h3>
-            <p>专业交易知识分享平台</p>
-            <div class="footer-links">
-                <a href="#">关于我们</a>
-                <a href="#">联系我们</a>
-                <a href="#">隐私政策</a>
-                <a href="#">使用条款</a>
-            </div>
-            <p class="copyright">© 2023 交易者心境 版权所有</p>
-        </div>
-    </footer>
-
-    <!-- 返回顶部按钮 -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 为每个section设置不同的边框颜色
-            const sections = document.querySelectorAll('.section');
-            const colors = ['#FFD700', '#8A2BE2', '#3CB371']; // 金色, 紫色, 绿色
-
-            sections.forEach((section, index) => {
-                const colorIndex = index % colors.length;
-                section.style.borderLeftColor = colors[colorIndex];
-            });
-
-            // 返回顶部按钮逻辑
-            const backToTopButton = document.querySelector('.back-to-top');
-            
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.add('visible');
-                } else {
-                    backToTopButton.classList.remove('visible');
-                }
-            });
-
-            backToTopButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            // 移动端菜单切换
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            });
-
-            // 响应式导航菜单调整
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    navLinks.style.display = 'flex';
-                } else {
-                    navLinks.style.display = 'none';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
