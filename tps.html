@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>交易员每日守则 - 专业优化版</title>
+    <title>交易员每日守则 - 图标优化版</title>
     <style>
         :root {
             --primary-blue: #1E90FF;
             --secondary-purple: #6A5ACD;
             --accent-indigo: #4B0082;
-            --neutral-light: #D3D3D3;
+            --neutral-light: #F5F5F5;
             --neutral-white: #FFFFFF;
             --text-dark: #333333;
-            --text-light: #7f8c8d;
-            --success-green: #27ae60;
-            --warning-red: #e74c3c;
+            --text-light: #7F8C8D;
+            --success-green: #27AE60;
+            --warning-red: #E74C3C;
             --border-radius: 8px;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -28,9 +28,9 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Microsoft YaHei UI', Arial, sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            background: linear-gradient(135deg, #F5F7FA 0%, #E4EDF5 100%);
             color: var(--text-dark);
             min-height: 100vh;
             padding: 20px;
@@ -43,11 +43,6 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .container:hover {
-            box-shadow: var(--hover-shadow);
         }
 
         header {
@@ -56,18 +51,6 @@
             padding: 40px 30px;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
         }
 
         header::after {
@@ -80,16 +63,10 @@
             background: linear-gradient(90deg, var(--accent-indigo), var(--primary-blue));
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         header p {
@@ -112,11 +89,11 @@
 
         .principle-card {
             background: var(--neutral-white);
-            border-left: 4px solid var(--primary-blue);
             border-radius: var(--border-radius);
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 25px;
+            box-shadow: var(--shadow);
             transition: var(--transition);
+            border-left: 4px solid var(--primary-blue);
             position: relative;
             overflow: hidden;
         }
@@ -128,18 +105,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(30,144,255,0.03) 0%, rgba(106,90,205,0.03) 100%);
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.03) 0%, rgba(106, 90, 205, 0.03) 100%);
             z-index: 0;
         }
 
         .principle-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            box-shadow: var(--hover-shadow);
         }
 
         .principle-card h3 {
             color: var(--primary-blue);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1.3rem;
             display: flex;
             align-items: center;
@@ -148,10 +125,9 @@
         }
 
         .principle-card h3::before {
-            content: "•";
-            color: var(--secondary-purple);
-            font-size: 1.8rem;
+            font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
             margin-right: 10px;
+            font-size: 1.5rem;
         }
 
         .principle-card p {
@@ -161,14 +137,38 @@
             z-index: 1;
         }
 
+        /* 为每个主题添加独特的图标 */
+        .planning h3::before {
+            content: "📝";
+        }
+
+        .risk-management h3::before {
+            content: "🛡️";
+        }
+
+        .stop-loss h3::before {
+            content: "⛔";
+        }
+
+        .emotion-control h3::before {
+            content: "🧘";
+        }
+
+        .waiting h3::before {
+            content: "⏳";
+        }
+
+        .review h3::before {
+            content: "🔍";
+        }
+
         .key-motto {
-            background: linear-gradient(135deg, #eaf6f5 0%, #f0f8f7 100%);
+            background: linear-gradient(135deg, #EAF6F5 0%, #F0F8F7 100%);
             border-left: 6px solid var(--accent-indigo);
             border-radius: var(--border-radius);
             padding: 25px;
             margin-top: 20px;
             position: relative;
-            overflow: hidden;
         }
 
         .key-motto::before {
@@ -180,7 +180,6 @@
             color: rgba(74, 0, 130, 0.1);
             font-family: serif;
             line-height: 1;
-            z-index: 0;
         }
 
         .key-motto p {
@@ -197,27 +196,11 @@
         }
 
         footer {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-purple) 100%);
+            background: var(--primary-blue);
             color: var(--neutral-white);
             text-align: center;
             padding: 20px;
             font-size: 0.9rem;
-            position: relative;
-        }
-
-        footer::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         @media (max-width: 768px) {
@@ -254,50 +237,44 @@
             .principle-card {
                 padding: 15px;
             }
-            
-            .key-motto {
-                padding: 20px;
-            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="header-content">
-                <h1>📝 交易员每日守则</h1>
-                <p>专业交易与个人成长的核心原则 - 优化视觉体验，提升专注力</p>
-            </div>
+            <h1>交易员每日守则</h1>
+            <p>专业交易与个人成长的核心原则 - 优化视觉体验，提升专注力</p>
         </header>
         
         <div class="content">
             <div class="principles-grid">
-                <div class="principle-card">
+                <div class="principle-card planning">
                     <h3>先有计划，再进场</h3>
                     <p>明确进出点与止损位置，避免情绪化决策。交易前制定详细计划是成功的第一步。</p>
                 </div>
                 
-                <div class="principle-card">
+                <div class="principle-card risk-management">
                     <h3>小亏无惧，大亏致命</h3>
                     <p>严格遵守单笔风险不超过总资金2%的原则，保护资本是长期生存的关键。</p>
                 </div>
                 
-                <div class="principle-card">
+                <div class="principle-card stop-loss">
                     <h3>严格止损，顺势持盈</h3>
                     <p>止损点一旦设定不轻易移动，盈利时让利润奔跑，避免过早止盈。</p>
                 </div>
                 
-                <div class="principle-card">
+                <div class="principle-card emotion-control">
                     <h3>情绪归零，纪律至上</h3>
                     <p>不因单笔交易的盈亏影响判断，严格遵守交易系统，保持情绪稳定。</p>
                 </div>
                 
-                <div class="principle-card">
+                <div class="principle-card waiting">
                     <h3>空仓也是交易</h3>
                     <p>市场没有明确机会时保持耐心，空仓等待也是一种重要的交易策略。</p>
                 </div>
                 
-                <div class="principle-card">
+                <div class="principle-card review">
                     <h3>复盘成长，长期主义</h3>
                     <p>每日记录交易细节，定期复盘总结，持续改进交易系统。</p>
                 </div>
