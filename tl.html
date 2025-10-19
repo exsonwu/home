@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>交易者心境 — 概率 系统 风控 纪律</title>
+  <style>
+    :root{
+      --bg:#f6fbff;
+      --paper:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --accent:#0ea5a4;
+      --maxw:780px;
+      --radius:16px;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans CJK SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b1020;
+        --paper:#071026;
+        --text:#e6eef8;
+        --muted:#9aa4b2;
+        --accent:#38bdf8;
+      }
+    }
+    html,body{height:100%;background:linear-gradient(180deg,var(--bg),#eef6fb);margin:0;padding:24px;}
+    .stage{max-width:calc(var(--maxw) + 48px);margin:0 auto;}
+    .card{background:var(--paper);border-radius:var(--radius);box-shadow:0 8px 30px rgba(16,24,40,0.08);padding:28px;overflow:hidden}
+
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .title-wrap{display:flex;gap:14px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:10px;flex:0 0 56px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),#7dd3fc);color:white;font-weight:700}
+    h1{font-size:22px;margin:0;color:var(--text);letter-spacing: -0.2px}
+    .subtitle{font-size:13px;color:var(--muted)}
+
+    .toolbar{display:flex;gap:10px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 10px;border-radius:10px;font-size:13px;cursor:pointer}
+    .btn:active{transform:translateY(1px)}
+
+    main{display:flex;gap:40px}
+    article{flex:1;max-width:var(--maxw)}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:18px}
+
+    .content{font-size:18px;line-height:1.78;color:var(--text);}
+    .content p{margin:14px 0}
+    .lead{font-size:20px;line-height:1.9;margin-bottom:16px;color:var(--text);}
+
+    blockquote{border-left:4px solid rgba(0,0,0,0.06);padding:12px 16px;margin:18px 0;background:linear-gradient(90deg,rgba(14,165,164,0.04),transparent);border-radius:8px;color:var(--text)}
+    ul{margin:10px 0 18px 20px}
+    li{margin:8px 0}
+
+    .progress{height:6px;background:rgba(0,0,0,0.06);border-radius:6px;overflow:hidden;margin:12px 0 18px}
+    .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#60a5fa)}
+
+    aside{width:220px;flex:0 0 220px;border-left:1px dashed rgba(0,0,0,0.04);padding-left:20px}
+    .toc{position:sticky;top:28px}
+    .toc h4{margin:0 0 10px;color:var(--muted);font-size:13px}
+    .toc a{display:block;color:var(--accent);text-decoration:none;margin:8px 0;font-size:14px}
+    .toc a:hover{text-decoration:underline}
+
+    /* responsive */
+    @media (max-width:940px){main{flex-direction:column}aside{order:2;width:100%;border-left:0;padding-left:0;padding-top:12px}.toc{position:relative;top:0}}
+    @media (max-width:520px){.card{padding:18px} .logo{width:44px;height:44px} h1{font-size:18px} .content{font-size:16px}}
+
+    /* small interactive helpers */
+    .controls{display:flex;gap:8px;align-items:center}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="card" role="main">
+      <header>
+        <div class="title-wrap">
+          <div class="logo">T</div>
+          <div>
+            <h1>交易者心境｜市场不欠你任何机会</h1>
+            <div class="subtitle">摘自《The Laws of Trading》—— Agustin Lebron</div>
+          </div>
+        </div>
+        <div class="toolbar" aria-hidden="false">
+          <div class="controls">
+            <button class="btn" id="dec">A-</button>
+            <button class="btn" id="inc">A+</button>
+            <button class="btn" id="toggle">切换亮/暗</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+
+      <main>
+        <article>
+          <div class="meta">阅读时长约 4 分钟 · 适合：交易者 / 投资者 / 风险管理学习者</div>
+
+          <div class="content" id="content">
+            <p class="lead">在这个充满噪音和诱惑的金融市场中，大部分交易者都陷入了一个误区——试图用预测来掌控市场。但《The Laws of Trading》告诉我们，市场从来不是一个可以被预测的机器，而是一个充满不确定性的复杂生态。作者 Agustin Lebron，作为前高盛量化交易员与顶级市场参与者，用自己多年的交易经历，总结出一套严谨且实用的交易法则。</p>
+
+            <p>这本书不仅讲“怎么做”，更讲“为什么这样做”。它的核心观点是：交易的成功并非来自一次漂亮的预测，而是来自长期的、可重复的、高概率的决策执行。你必须像科学家一样思考，像工程师一样搭建系统，像企业家一样管理风险。</p>
+
+            <blockquote>“市场不欠你任何机会。” —— 不要抱怨行情没给你赚钱的机会，你的任务是识别并把握属于你的那部分。</blockquote>
+
+            <p>本篇将带你深度拆解书中的思维框架，从概率与风险的视角看待市场，并教你如何建立一套可持续盈利的交易系统。无论你是日内短线交易者，还是中长线投资者，这些法则都能让你减少盲目跟风和情绪化交易的陷阱。</p>
+
+            <h3>🔍 核心亮点</h3>
+            <ul>
+              <li><strong>概率思维</strong>——市场上没有“必然”，只有“可能”。</li>
+              <li><strong>系统化交易</strong>——用规则替代情绪，用计划替代冲动。</li>
+              <li><strong>风险控制</strong>——避免“一次错误就归零”的致命结局。</li>
+              <li><strong>长期主义</strong>——活得更久，比一次赢更多重要。</li>
+              <li><strong>执行纪律</strong>——执行力是交易中最稀缺的能力。</li>
+            </ul>
+
+            <h3>💬 书中名句精华</h3>
+            <p>“亏损不是失败，而是成本。” —— 成本是业务的一部分，交易也是。</p>
+            <p>“交易的目标不是预测，而是管理不确定性。” —— 真正的高手从来不试图完全看穿市场。</p>
+            <p>“没有风险控制，一切盈利都是幻觉。” —— 短期暴利无法抵御长期的风险暴露。</p>
+            <p>“简单可重复的策略，才是长期生存的基础。” —— 复杂的策略容易出错，简单的策略容易坚持。</p>
+            <p>“活下来，比赢一次更重要。” —— 长期存活才有机会积累复利。</p>
+
+            <h3>📈 适合读者</h3>
+            <ul>
+              <li>交易几年仍然无法稳定盈利的人</li>
+              <li>希望用科学化方法建立交易系统的交易者</li>
+              <li>想从情绪化交易转向纪律交易的投资者</li>
+              <li>对风险管理和概率思维感兴趣的人</li>
+            </ul>
+
+            <p>若你愿意，可以把这篇文章作为每日复盘的提示词：写下每笔交易的概率判断、风险暴露、执行偏差与情绪触发点。长期坚持，你会发现“技术”只是外在，内在的纪律才是决定胜负的关键。</p>
+
+            <footer style="margin-top:20px;color:var(--muted);font-size:13px">· 交易者心境系列 ·</footer>
+          </div>
+        </article>
+
+        <aside>
+          <div class="toc">
+            <h4>目录</h4>
+            <a href="#">核心亮点</a>
+            <a href="#">书中名句</a>
+            <a href="#">适合读者</a>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // font size controls
+    const content = document.getElementById('content');
+    const inc = document.getElementById('inc');
+    const dec = document.getElementById('dec');
+    const toggle = document.getElementById('toggle');
+    const prog = document.getElementById('prog');
+    let size = 18;
+    inc.addEventListener('click',()=>{ if(size<24){ size+=1; content.style.fontSize=size+'px'; }});
+    dec.addEventListener('click',()=>{ if(size>14){ size-=1; content.style.fontSize=size+'px'; }});
+    toggle.addEventListener('click',()=>{ document.documentElement.classList.toggle('dark'); document.body.style.background = document.documentElement.classList.contains('dark') ? 'linear-gradient(180deg,#071026,#021022)' : 'linear-gradient(180deg,var(--bg),#eef6fb)'; });
+
+    // scroll progress
+    function onScroll(){
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h>0 ? (window.scrollY / h) * 100 : 0;
+      prog.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  </script>
+</body>
+</html>
