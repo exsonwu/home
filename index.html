@@ -34,7 +34,6 @@
             min-height: 100vh;
         }
 
-        /* 主容器 */
         .container {
             max-width: 800px;
             margin: 40px auto;
@@ -49,7 +48,6 @@
             box-shadow: var(--hover-shadow);
         }
 
-        /* 头部样式 */
         header {
             text-align: center;
             padding-bottom: 20px;
@@ -82,7 +80,6 @@
             font-style: italic;
         }
 
-        /* 作品集列表 */
         .portfolio-list {
             list-style: none;
             padding: 0;
@@ -110,15 +107,46 @@
             font-size: 1.2em;
             font-weight: 500;
             transition: var(--transition);
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .portfolio-item a:hover {
             color: var(--accent-color);
-            text-decoration: underline;
         }
 
-        /* 脚注 */
+        .portfolio-item a::before {
+            font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+            font-size: 1.2em;
+        }
+
+        /* 为每个作品添加独特图标 */
+        .wsgg a::before {
+            content: "👻";
+        }
+        .tps a::before {
+            content: "📜";
+        }
+        .bp13 a::before {
+            content: "🔢";
+        }
+        .upst a::before {
+            content: "🌐";
+        }
+        .rm a::before {
+            content: "📝";
+        }
+        .stoic a::before {
+            content: "🧠";
+        }
+        .tl a::before {
+            content: "⚖️";
+        }
+        .time a::before {
+            content: "⏳";
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -128,7 +156,6 @@
             font-size: 0.9em;
         }
 
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .container {
                 margin: 20px;
@@ -173,42 +200,42 @@
 
         <main>
             <ul class="portfolio-list">
-                <li class="portfolio-item">
+                <li class="portfolio-item wsgg">
                     <a href="wsgg.html" target="_blank">
                         WSGG - 华尔街幽灵的礼物
                     </a>
                 </li>
-                <li class="portfolio-item">
+                <li class="portfolio-item tps">
                     <a href="tps.html" target="_blank">
                         TPS - 交易原则
                     </a>
                 </li>
-                <li class="portfolio-item">
+                <li class="portfolio-item bp13">
                     <a href="bp13.html" target="_blank">
                         Brent Penfold 13 条核心交易法则
                     </a>
                 </li>
-                <li class="portfolio-item">
+                <li class="portfolio-item upst">
                     <a href="upst.html" target="_blank">
                         UPST - 成功的交易的普遍原则
                     </a>
                 </li>
-                <li class="portfolio-item">
+                <li class="portfolio-item rm">
                     <a href="rm.html" target="_blank">
                         Record Management - 持续记录自己，可以改变你的交易命运｜从这 5 个记录开始重启人生
                     </a>
                 </li>
-                <li class="portfolio-item">
+                <li class="portfolio-item stoic">
                     <a href="stoic.html" target="_blank">
                         The Daily Stoic 【掌控思想，行动制胜】
                     </a>
                 </li>
-                <li class="portfolio-item">
+                <li class="portfolio-item tl">
                     <a href="tl.html" target="_blank">
                         The Laws of Trading - 市场不欠你任何机会
                     </a>
                 </li>
-                <li class="portfolio-item">
+                <li class="portfolio-item time">
                     <a href="time.html" target="_blank">
                         Time - 时间管理大师
                     </a>
