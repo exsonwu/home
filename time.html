@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄时钟</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #2f2f2f; /* 深灰色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #f0e68c; /* 金色字体 */
+        }
+        .container {
+            text-align: center;
+            background-color: #338d60; /* 调整为淡绿色背景 */
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            width: 400px; /* 容器宽度调整为400px */
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #f0e68c; /* 金色标题 */
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .time {
+            font-size: 3.5rem;
+            color: #f0e68c; /* 金色时间显示 */
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between; /* 按钮之间均匀分布 */
+            margin-top: 20px;
+            width: 100%;
+        }
+        .btn {
+            background-color: #b8860b; /* 金色按钮 */
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 45%; /* 设置按钮的宽度占容器的45% */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #f0e68c; /* 悬停时变金色 */
+            color: #004d33; /* 按钮文字变深绿色 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .btn:disabled {
+            background-color: #777; /* 禁用按钮 */
+            cursor: not-allowed;
+        }
+        .clock {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        canvas {
+            transform: rotate(-90deg); /* 旋转canvas，使起始位置在顶部 */
+            border: 4px solid #f0e68c; /* 金色边框 */
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>番茄时钟</h1>
+    <div class="clock">
+        <canvas id="circleCanvas" width="200" height="200"></canvas>
+    </div>
+    <div class="time" id="time-display">25:00</div>
+    <div class="controls">
+        <button class="btn" id="start-btn" onclick="startTimer()">开始</button>
+        <button class="btn" id="reset-btn" onclick="resetTimer()" disabled>重置</button>
+    </div>
+</div>
+
+<script>
+    let timer;
+    let isWorking = true; // true -> 工作, false -> 休息
+    let timeLeft = 25 * 60; // 初始时间：25分钟
+    let isRunning = false;
+    let canvas = document.getElementById("circleCanvas");
+    let ctx = canvas.getContext("2d");
+
+    // 设置圆环基本参数
+    const radius = 90;
+    const lineWidth = 15;
+    const center = canvas.width / 2;
+
+    function drawCircle(progress) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
+        ctx.beginPath();
+        ctx.arc(center, center, radius, 0, 2 * Math.PI); // 绘制背景圆环
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = "#004d33"; // 深绿色背景圆环
+        ctx.stroke();
+
+        // 绘制进度圆环
+        ctx.beginPath();
+        ctx.arc(center, center, radius, 0, 2 * Math.PI * progress);
+        ctx.lineWidth = lineWidth;
+        ctx.strokeStyle = isWorking ? "#b8860b" : "#ff4081"; // 工作时金色，休息时粉色
+        ctx.stroke();
+    }
+
+    function updateTimeDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById('time-display').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        const progress = 1 - (timeLeft / (isWorking ? 25 * 60 : 5 * 60)); // 计算进度
+        drawCircle(progress);
+    }
+
+    function startTimer() {
+        if (isRunning) return;
+        isRunning = true;
+        document.getElementById('start-btn').disabled = true;
+        document.getElementById('reset-btn').disabled = false;
+
+        timer = setInterval(function() {
+            timeLeft--;
+            updateTimeDisplay();
+            if (timeLeft === 0) {
+                clearInterval(timer);
+                isWorking = !isWorking; // 切换状态
+                timeLeft = isWorking ? 25 * 60 : 5 * 60; // 25分钟工作，5分钟休息
+                alert(isWorking ? "工作时间结束，开始休息！" : "休息时间结束，开始工作！");
+                startTimer(); // 自动开始下一个阶段
+            }
+        }, 1000);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        isRunning = false;
+        timeLeft = 25 * 60;
+        updateTimeDisplay();
+        document.getElementById('start-btn').disabled = false;
+        document.getElementById('reset-btn').disabled = true;
+    }
+
+    // 初始化时间显示和圆环
+    updateTimeDisplay();
+</script>
+
+</body>
+</html>
