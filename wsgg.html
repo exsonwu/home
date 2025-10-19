@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>华尔街幽灵的礼物</title>
+		<style>
+			:root {
+				--primary-color: #2c3e50;
+				--secondary-color: #34495e;
+				--accent-color: #e74c3c;
+				--text-color: #333;
+				--light-bg-color: #f4f6f9;
+				--card-bg-color: #fff;
+				--shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+
+			body {
+				font-family: 'Microsoft YaHei UI', serif;
+				line-height: 1.8;
+				background-color: var(--light-bg-color);
+				color: var(--text-color);
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.container {
+				width: 90%;
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+
+			header {
+				background-color: var(--primary-color);
+				color: #fff;
+				text-align: center;
+				padding: 60px 20px;
+				position: relative;
+				overflow: hidden;
+				box-shadow: var(--shadow);
+				margin-bottom: 20px;
+			}
+
+			header::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/1600x900/?trading,stock-market') no-repeat center center/cover;
+				filter: blur(5px);
+				z-index: 1;
+			}
+
+			header .content {
+				position: relative;
+				z-index: 2;
+			}
+
+			header h1 {
+				font-size: 3.2em;
+				font-weight: 700;
+				margin: 0;
+				letter-spacing: 2px;
+				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+			}
+
+			header p {
+				font-size: 1.6em;
+				margin-top: 15px;
+				font-style: italic;
+			}
+
+			main {
+				display: grid;
+				gap: 20px;
+				grid-template-columns: 1fr;
+			}
+
+			@media (min-width: 768px) {
+				main {
+					grid-template-columns: 2fr 1fr;
+				}
+			}
+
+			.main-content {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+
+			.chapter-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.chapter-item {
+				background-color: var(--card-bg-color);
+				padding: 25px;
+				border-radius: 10px;
+				box-shadow: var(--shadow);
+				margin-bottom: 15px;
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			.chapter-item:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+			}
+
+			.chapter-item h2 {
+				color: var(--primary-color);
+				font-size: 1.6em;
+				margin-top: 0;
+				border-bottom: 2px solid var(--accent-color);
+				padding-bottom: 10px;
+			}
+
+			.chapter-item p {
+				color: var(--text-color);
+				margin: 10px 0 0;
+			}
+
+			aside {
+				background-color: var(--card-bg-color);
+				padding: 25px;
+				border-radius: 10px;
+				box-shadow: var(--shadow);
+			}
+
+			aside h3 {
+				color: var(--accent-color);
+				font-size: 1.5em;
+				margin-top: 0;
+				border-bottom: 2px solid var(--primary-color);
+				padding-bottom: 10px;
+			}
+
+			.rule-card {
+				background-color: var(--light-bg-color);
+				border-left: 5px solid var(--accent-color);
+				padding: 15px;
+				margin-bottom: 15px;
+				border-radius: 5px;
+			}
+
+			.rule-card h4 {
+				color: var(--primary-color);
+				margin: 0 0 10px 0;
+				font-size: 1.2em;
+			}
+
+			footer {
+				text-align: center;
+				padding: 20px;
+				margin-top: 40px;
+				color: #777;
+				font-size: 0.9em;
+				border-top: 1px solid #ddd;
+			}
+		</style>
+	</head>
+	<body>
+
+		<header>
+			<div class="content">
+				<h1>华尔街幽灵的礼物</h1>
+				<p>我是你成功背后的影子 — 幽灵</p>
+			</div>
+		</header>
+
+		<div class="container">
+			<main>
+				<section class="main-content">
+					<div class="chapter-item">
+						<h2>前言: 我是你成功背后的影子</h2>
+						<p>一个集三十年交易经验的神秘人物，幽灵，现身网络，无偿公开交易秘诀。他将自己的知识和行为习惯改变的能力归纳为三个交易规则，认为这对于成功的交易至关重要。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第一章: 你是谁? 交易圈中的幽灵</h2>
+						<p>幽灵的出现源于他在《期货杂志》论坛上的交流。他不愿意接受任何赞美或金钱回报，只希望帮助那些在交易中受煎熬的人。他选择“交易圈中的幽灵”作为笔名，因为他只愿成为成功背后的影子。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第二章: 备战交易: 大师的匠心</h2>
+						<p>在交易开始前，大师会进行精心准备，包括在安静的办公室里找到合适的椅子和时钟，进行身体锻炼和冥想，并准备一本最喜欢的书。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第三章: 规则一: 只持有正确的仓位</h2>
+						<p>幽灵强调，一旦发现仓位不正确，应立即清除，永远不要等到市场提醒你已经出错。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第四章: 规则二: 正确加码才能获利</h2>
+						<p>获得暴利的关键在于正确地对盈利仓位进行加码。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第五章: 规则一加二: 实战示范</h2>
+						<p>幽灵通过实战示例，完全展示了短线交易的秘诀，证明两条必胜规则简单易行。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第六章: 当日交易: 规则成就短线高手</h2>
+						<p>对于当日交易，唯有将规则融会贯通，才能成为短线高手。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第七章: 妙手连连赢定期权</h2>
+						<p>幽灵详述了如何在期权交易中恪守规则，稳定获利。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第八章: 图表交易: 大师的天机</h2>
+						<p>大师通过观察大众图表并采用独家数据，标新立异地利用图表进行交易。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第九章: 一声棒喝: 改变你的行为习惯</h2>
+						<p>按照人类的自然天性进行交易必然会导致失败。因此，掌握规则后，必须学会改变自己的行为习惯，这是幽灵的当头棒喝。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十章: 跟我来游戏: 放松才有创造力</h2>
+						<p>幽灵提供了一款交易游戏，告诉我们想成为优秀的交易者，必须放松自己，找回创造力。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十一章: 出手如电: 对抗交易中的情绪</h2>
+						<p>如果你因为手中的仓位而耳热心跳、寝食不安，幽灵告诫你应第一时间立即清仓。职业专家会详述在交易中对抗自身情绪的策略。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十二章: 反败为胜: 重创之后重拾信心</h2>
+						<p>交易是失败者的游戏，大师也会面临失败的概率。他分享了如何在重创之后重新开始，重拾信心。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十三章: 你错了! 市场并非永远正确</h2>
+						<p>市场总是正确的，这被视为公理，但幽灵说我们错了。成交量极少的市场可能是错误的，而错误的市场会带来更多的获利机遇。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十四章: 规则三: 巨量即是套现良机</h2>
+						<p>幽灵和交易员们总结出第三条规则：在放巨量后的三天内，全部清仓以锁定利润，把握时机。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十五章: 应对意外: 交易与飞机失事的感悟</h2>
+						<p>交易失败和约翰·丹佛的飞机失事有共通之处：如果你做好足够的准备应对意外，就能如同故障飞机有足够的高度来排除困难。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十六章: 交易计划: 规则运用的铺垫</h2>
+						<p>没有一个交易计划，再好的规则也无从施展。幽灵提供了如何制定完善交易计划的方法。</p>
+					</div>
+					<div class="chapter-item">
+						<h2>第十七章: 交易执行: 妙手下单的要领</h2>
+						<p>作为最后一课，幽灵教导了如何做到知行合一，妙手下单。</p>
+					</div>
+				</section>
+
+				<aside>
+					<h3>幽灵的智慧</h3>
+					<div class="rule-card">
+						<h4>核心哲学</h4>
+						<p>交易成功最重要的因素是“正确的知识”加上“行为习惯改变的能力”。</p>
+					</div>
+					<div class="rule-card">
+						<h4>三条必胜规则</h4>
+						<p>1. “只持有正确的仓位”：不要等市场告诉你已经出错。</p>
+						<p>2. “正确加码”：毫无例外地对你的盈利仓位进行加码。</p>
+						<p>3. “巨量套现”：在放巨量后的三天内全部清仓。</p>
+					</div>
+					<div class="rule-card">
+						<h4>大师的告诫</h4>
+						<p>“如果你因为手中的仓位而耳热心跳，寝食不安，那么，第一时间立即清仓。”</p>
+					</div>
+				</aside>
+			</main>
+		</div>
+
+		<footer>
+			<p>&copy; 华尔街幽灵的礼物 </p>
+		</footer>
+
+	</body>
+</html>
+		
