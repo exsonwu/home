@@ -1,283 +1,308 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>持续记录自己，可以改变你的交易命运</title>
-		<meta name="description" content="持续记录自己，从情绪、念头、行为、触发点与结果五个维度，重启你的交易人生。">
-		<style>
-			:root {
-				/* ========== 舒适阅读配色 (基础色) ========== */
-				--bg: #fcfcfc;
-				/* 柔和的近白色背景 */
-				--text: #212529;
-				/* 深黑，高可读性 */
-				--muted: #606870;
-				/* 柔和中灰 */
-				--accent: #0070c0;
-				/* 自然蓝，强调色 */
-				--accent-light: #f0f8ff;
-				/* 极浅蓝背景 */
-				--card: #ffffff;
-				/* 容器背景白 */
-				/* ==================================== */
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>持续记录自己，可以改变你的交易命运</title>
+    <meta name="description" content="持续记录自己，从情绪、念头、行为、触发点与结果五个维度，重启你的交易人生。">
+    <style>
+        /* 定义颜色变量 (紫色、金色、绿色主题) */
+        :root {
+            --color-primary: #673AB7;       /* 深紫色：主色、标题、重点边框 */
+            --color-accent-gold: #FFC107;   /* 金色/琥珀色：强调色、高亮主题 */
+            --color-action-green: #4CAF50;  /* 专业绿：行动号召 */
+            
+            --bg: #fcfcfc;                  /* 柔和背景 */
+            --text: #333333;                /* 深色文本 */
+            --muted: #6c757d;               /* 柔和中灰 */
+            --accent-light: #F3E5F5;        /* 极浅紫色背景 */
+            --card: #ffffff;
+            
+            --radius: 10px;                 /* 统一圆角 */
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --maxw: 900px;                  /* 内容容器宽度 */
+            --content-padding: 30px;        /* 统一内容缩进值 */
+            --font-size-base: 20px;         /* 正文基础字体 20px */
+        }
 
-				--radius: 12px;
-				--shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-				--maxw: 860px;
-				/* 统一内容缩进值 */
-				--content-padding: 28px;
-			}
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans", sans-serif;
+            line-height: 1.8; 
+            margin: 0;
+            padding: 0;
+            font-size: var(--font-size-base);
+        }
 
-			body {
-				background: var(--bg);
-				color: var(--text);
-				font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Noto Sans", sans-serif;
-				line-height: 1.7;
-				margin: 0;
-				padding: 0;
-			}
+        /* ------------------- Header (紫色主题) ------------------- */
+        header {
+            /* 应用紫色背景和新的宽度设置 */
+            background: var(--color-primary);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            
+            /* 统一宽度和居中 */
+            max-width: var(--maxw);
+            margin: 30px auto 30px; 
+            
+            /* 关键修正：使用 border-box 和统一 padding，让 header 的边界与 section 对齐 */
+            padding: 30px var(--content-padding);
+            box-sizing: border-box; 
+        }
 
-			header {
-				/* 关键修改 1: 蓝底 */
-				background: var(--accent);
-				box-shadow: var(--shadow);
-				border-radius: var(--radius);
-				/* 保持最大宽度和居中 */
-				max-width: var(--maxw);
-				margin: 32px auto 20px;
-				/* 保持内容内边距 */
-				padding: 28px var(--content-padding);
-				/* 确保 padding 包含在 max-width 内，防止溢出 */
-				box-sizing: border-box;
-			}
+        header h1 {
+            font-size: 3.1rem; 
+            margin: 0 0 10px;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
 
-			header h1 {
-				font-size: 1.9rem;
-				margin: 0 0 8px;
-				/* 关键修改 2: 白字 */
-				color: #ffffff;
-				letter-spacing: -0.02em;
-			}
+        header p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: 1.05rem;
+        }
+        
+        /* ------------------- Main Content ------------------- */
+        main {
+            /* 保持与 header 相同的最大宽度和居中，实现对齐 */
+            max-width: var(--maxw);
+            margin: 0 auto 60px; 
+            
+            /* main 自身不需要 padding，由内部 section 负责 */
+            padding: 0; 
+            box-sizing: content-box; 
+        }
 
-			header p {
-				/* 关键修改 3: 白字，略微降低透明度以区分 h1 */
-				color: rgba(255, 255, 255, 0.9);
-				margin: 0;
-			}
+        section {
+            background: var(--card);
+            border-radius: var(--radius);
+            margin-top: 25px; 
+            box-shadow: var(--shadow);
+            
+            /* 关键修正：section 必须是 border-box，且与 header 共享 padding */
+            padding: 30px var(--content-padding);
+            box-sizing: border-box; 
+            border-left: 5px solid var(--color-primary); 
+        }
+        
+        /* 特殊：名句精华（最后一个section）使用金色高亮 */
+        main section:last-of-type {
+            border-left: none; 
+            background: #FFF8E1; 
+            border: 1px solid var(--color-accent-gold);
+        }
 
-			main {
-				/* 保持最大宽度和居中，与 header 对齐 */
-				max-width: var(--maxw);
-				margin: 0 auto 60px;
-				/* 关键修正：移除 main 上的所有水平 padding */
-				padding: 0;
-				/* 确保 main 的宽度行为与 header 一致 */
-				box-sizing: border-box;
-			}
+        /* ------------------- Typography & Elements ------------------- */
+        h2 {
+            color: var(--color-primary); 
+            margin-top: 0;
+            font-size: 2.5rem; 
+            border-left: none; 
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
 
-			section {
-				background: var(--card);
-				border-radius: var(--radius);
-				margin-top: 22px;
-				box-shadow: var(--shadow);
-				/* section 承担内容缩进，与 header 对齐 */
-				padding: 24px var(--content-padding);
-				box-sizing: border-box;
-			}
+        h3 {
+            margin-top: 1.5em;
+            font-size: 2.1rem; 
+            color: var(--color-primary); 
+            font-weight: 600;
+        }
 
-			h2 {
-				/* 保持与主题内容一致的颜色 */
-				color: #0059a5;
-				margin-top: 0;
-				font-size: 1.4rem;
-				border-left: 4px solid var(--accent);
-				padding-left: 10px;
-			}
+        strong {
+            color: var(--color-action-green); 
+            font-weight: 700;
+        }
 
-			h3 {
-				margin-top: 1.2em;
-				font-size: 1.2rem;
-				/* 略微柔和的中蓝 */
-				color: #0070c0;
-			}
+        ul,
+        ol {
+            margin-left: 0; 
+            padding-left: 30px; 
+        }
 
-			p {
-				margin: 0.8em 0;
-			}
+        li {
+            margin: 0.8em 0; 
+        }
+        
+        /* 动作列表样式优化 (列表符号使用金色) */
+        section ul li {
+            list-style: none; 
+            position: relative;
+            padding-left: 30px; 
+        }
+        
+        section ul li::before {
+            content: "✦"; 
+            color: var(--color-accent-gold);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1.5em; 
+            font-size: 1.2em;
+        }
 
-			ul,
-			ol {
-				margin-left: 1.2em;
-			}
+        blockquote {
+            background: var(--accent-light);
+            border-left: 5px solid var(--color-accent-gold); 
+            padding: 18px 20px; 
+            margin: 25px 0;
+            color: var(--text); 
+            border-radius: var(--radius);
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--muted);
+            margin: 40px 0;
+            font-size: 1rem;
+        }
 
-			li {
-				margin: 0.4em 0;
-			}
+        /* ------------------- Responsive Design ------------------- */
+        @media (max-width: 768px) {
+            :root {
+                /* 关键：使用百分比 max-width 来保持对齐 */
+                --maxw: 90%; 
+                --content-padding: 18px;
+                --font-size-base: 18px;
+            }
+            
+            body {
+                font-size: var(--font-size-base);
+            }
 
-			blockquote {
-				background: var(--accent-light);
-				border-left: 4px solid var(--accent);
-				padding: 12px 16px;
-				margin: 16px 0;
-				color: var(--muted);
-				border-radius: var(--radius);
-				font-style: italic;
-			}
+            header {
+                /* 居中收缩 */
+                margin: 20px auto 20px;
+                padding: 24px var(--content-padding);
+            }
 
-			footer {
-				text-align: center;
-				color: var(--muted);
-				margin: 40px 0;
-				font-size: 0.9rem;
-			}
+            main {
+                /* 居中收缩 */
+                margin: 0 auto 40px;
+                padding: 0;
+            }
+            
+            section {
+                padding: 24px var(--content-padding);
+                margin-top: 15px;
+            }
 
-			@media (max-width: 768px) {
-
-				/* 关键修正：在移动端统一内容缩进值 */
-				:root {
-					--content-padding: 18px;
-				}
-
-				header {
-					/* 调整 margin，使其与 main 居中对齐 */
-					margin: 18px auto 10px;
-					/* 调整 padding 为移动端值 */
-					padding: 18px var(--content-padding);
-					/* 关键：使用 100% 宽度，让 padding 决定内容区域 */
-					max-width: 100%;
-					width: 100%;
-				}
-
-				main {
-					/* 移除所有 padding */
-					padding: 0;
-					margin: 0 auto 40px;
-					/* 关键：使用 100% 宽度 */
-					max-width: 100%;
-					width: 100%;
-				}
-
-				section {
-					/* section 自身承担内容缩进，与 header 对齐 */
-					padding: 18px var(--content-padding);
-					margin-top: 12px;
-				}
-
-				header h1 {
-					font-size: 1.5rem;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<header>
-			<h1>持续记录自己，可以改变你的交易命运｜从这 5 个记录开始重启人生</h1>
-			<p>从情绪、念头、行为、触发点与结果五个维度，系统认识自己，掌控交易与人生。</p>
-		</header>
-
-		<main>
-			<section>
-				<h2>为什么持续记录自己如此重要？</h2>
-				<p>交易不只是技术，也不只是策略。成功的交易背后，是对自己情绪、念头、行为、触发点与结果的深刻认知。许多交易员花大量时间研究指标、策略公式，却忽略了最核心的因素——自己。</p>
-				<p>正如交易大师 <strong>保罗·都铎·琼斯</strong> 所说：「从交易角度看，成功的秘密在于对信息与知识永不止息的渴求。」他靠的不是运气，而是对自己心智与市场动态的全面掌握。</p>
-				<p><strong>雷·达里奥</strong> 在《原则》中也提醒我们：「痛苦加上反思，就会产生进步。」每一次交易失利，其实都是在给你讯息，只要你愿意仔细记录与反思，你就能把痛苦转化为成长的力量。</p>
-				<p>研究显示，持续记录决策、情绪与行为的人，其成功率比单纯依靠策略的人高出 <strong>23%</strong>（哈佛商业评论报告）。心理学家 <strong>布雷特·斯坦伯格</strong>
-					在《交易心理学》中指出，透明化自己的情绪与念头，是从好交易员进化为顶尖交易员的核心关键。</p>
-			</section>
-
-			<section>
-				<h2>5个关键维度——开始你的记录之旅</h2>
-
-				<h3>第一章：情绪记录——看见真实的自己</h3>
-				<p>交易中最致命的敌人，往往不是市场，而是情绪。恐惧、贪婪、焦虑、兴奋……这些力量每天都影响你的每一次决策。</p>
-				<strong>行动方案：</strong>
-				<ul>
-					<li>每天交易结束后，花五分钟记录当下的情绪状态。</li>
-					<li>标记情绪波动明显的交易，找出哪些心态导致错误决策。</li>
-					<li>每周回顾情绪曲线，找出正向影响的情绪模式。</li>
-				</ul>
-
-				<h3>第二章：念头记录——捕捉交易的内心对话</h3>
-				<p>每一次下单前，你的脑中都在进行无声辩论：「这个位置应该进吗？」「这次不会错吧……」</p>
-				<strong>行动方案：</strong>
-				<ul>
-					<li>交易过程中，简短记录当下的想法与直觉。</li>
-					<li>分类念头为合理分析或不理性推测。</li>
-					<li>定期反思，将不良念头转化为警示信号。</li>
-				</ul>
-
-				<h3>第三章：行为记录——打造可复制的成功模式</h3>
-				<p>成功是行为模式的堆积，而非单次操作的幸运。</p>
-				<strong>行动方案：</strong>
-				<ul>
-					<li>记录每笔交易的进出点、原因与结果。</li>
-					<li>统计行为前后的步骤，提炼可复制的成功行为。</li>
-				</ul>
-
-				<h3>第四章：触发点记录——理解你的决策机制</h3>
-				<p>每次交易决策背后都有触发点。掌握触发点，你就能从被动反应转为主动掌控。</p>
-				<strong>行动方案：</strong>
-				<ul>
-					<li>记录触发事件，包括市场讯号、新闻消息或他人意见。</li>
-					<li>分析触发点，辨别哪些能导向正确决策。</li>
-					<li>制定触发点应对策略，保持冷静判断。</li>
-				</ul>
-
-				<h3>第五章：结果与反思记录——死循环成长</h3>
-				<p>记录不只是写下当下，更重要的是反思。每一次交易得失都是宝贵养分。</p>
-				<strong>行动方案：</strong>
-				<ul>
-					<li>每周回顾交易结果，统整情绪、念头、行为与触发点。</li>
-					<li>分析成功与失败模式，提炼可复制策略。</li>
-					<li>设定下周行动计划，把反思结果落实于实际操作。</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>30天行动挑战——从记录开始，重启人生</h2>
-				<p>今日起，记录一笔交易的五个维度：情绪、念头、行为、触发点与结果。</p>
-				<p>每周回顾一次，找出至少一个可改进的地方。</p>
-				<p>坚持 30 天，你会明显感受到交易决策的转变，从盲目跟随市场到主动掌控。</p>
-				<blockquote>
-					「掌握自己心智的运作，比掌握市场更重要。」——雷·达里奥
-					「反思是成功快捷方式，每一次错误都应被记录并分析。」——保罗·都铎·琼斯
-				</blockquote>
-			</section>
-
-			<section>
-				<h2>为什么这套方法值得执行？</h2>
-				<ul>
-					<li>帮助你从情绪驱动转为理性决策。</li>
-					<li>提升绩效，降低心理压力。</li>
-					<li>建立可复制、可持续的交易模式。</li>
-					<li>让你主动掌控人生与市场，而非被动应对。</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>推荐工具与技巧</h2>
-				<ul>
-					<li>使用笔记软件（如 Notion、Evernote）或纸本日记。</li>
-					<li>建立简单表格：日期、情绪、念头、行为、触发点、结果。</li>
-					<li>每周固定回顾，标记亮点与改进点。</li>
-					<li>与交易伙伴分享心得，增加外部反馈。</li>
-				</ul>
-			</section>
-
-			<section>
-				<h2>名句精华</h2>
-				<blockquote>
-					「从交易角度看，成功的秘密在于对信息与知识永不止息的渴求。」——保罗·都铎·琼斯<br>
-					「痛苦加上反思，就会产生进步。」——雷·达里奥<br>
-					「最危险的敌人往往不是市场，而是你无法控制的内心对话。」——艾德温·勒布朗<br>
-					「交易的成功来自于反思与调整，错误是最直接的老师。」——保罗·都铎·琼斯
-				</blockquote>
-			</section>
-		</main>
-
-		<footer>
-			© 2025 交易心智成长计划｜基于 Brent Penfold、Ray Dalio、Paul Tudor Jones 思想整理
-		</footer>
-	</body>
+            header h1 {
+                font-size: 2.4rem;
+            }
+            
+            h2 {
+                font-size: 2.0rem;
+            }
+            
+            h3 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>持续记录自己，可以改变你的交易命运｜从这 5 个记录开始重启人生</h1>
+        <p>从情绪、念头、行为、触发点与结果五个维度，系统认识自己，掌控交易与人生。</p>
+    </header>
+    <main>
+        <section>
+            <h2>为什么持续记录自己如此重要？</h2>
+            <p>交易不只是技术，也不只是策略。成功的交易背后，是对自己情绪、念头、行为、触发点与结果的深刻认知。许多交易员花大量时间研究指标、策略公式，却忽略了最核心的因素——**自己**。</p>
+            <p>正如交易大师 <strong>保罗·都铎·琼斯</strong> 所说：「从交易角度看，成功的秘密在于对信息与知识永不止息的渴求。」他靠的不是运气，而是对自己心智与市场动态的全面掌握。</p>
+            <p><strong>雷·达里奥</strong> 在《原则》中也提醒我们：「痛苦加上反思，就会产生进步。」每一次交易失利，其实都是在给你讯息，只要你愿意仔细记录与反思，你就能把痛苦转化为成长的力量。</p>
+            <p>研究显示，持续记录决策、情绪与行为的人，其成功率比单纯依靠策略的人高出 **23%**（哈佛商业评论报告）。心理学家 <strong>布雷特·斯坦伯格**
+                在《交易心理学》中指出，透明化自己的情绪与念头，是从好交易员进化为顶尖交易员的核心关键。</p>
+        </section>
+        <section>
+            <h2>5个关键维度——开始你的记录之旅</h2>
+            <h3>第一章：情绪记录——看见真实的自己</h3>
+            <p>交易中最致命的敌人，往往不是市场，而是情绪。恐惧、贪婪、焦虑、兴奋……这些力量每天都影响你的每一次决策。</p>
+            <strong>行动方案：</strong>
+            <ul>
+                <li>每天交易结束后，花五分钟记录当下的情绪状态。</li>
+                <li>标记情绪波动明显的交易，找出哪些心态导致错误决策。</li>
+                <li>每周回顾情绪曲线，找出正向影响的情绪模式。</li>
+            </ul>
+            <h3>第二章：念头记录——捕捉交易的内心对话</h3>
+            <p>每一次下单前，你的脑中都在进行无声辩论：「这个位置应该进吗？」「这次不会错吧……」</p>
+            <strong>行动方案：</strong>
+            <ul>
+                <li>交易过程中，简短记录当下的想法与直觉。</li>
+                <li>分类念头为合理分析或不理性推测。</li>
+                <li>定期反思，将不良念头转化为警示信号。</li>
+            </ul>
+            <h3>第三章：行为记录——打造可复制的成功模式</h3>
+            <p>成功是行为模式的堆积，而非单次操作的幸运。</p>
+            <strong>行动方案：</strong>
+            <ul>
+                <li>记录每笔交易的进出点、原因与结果。</li>
+                <li>统计行为前后的步骤，提炼可复制的成功行为。</li>
+            </ul>
+            <h3>第四章：触发点记录——理解你的决策机制</h3>
+            <p>每次交易决策背后都有触发点。掌握触发点，你就能从被动反应转为主动掌控。</p>
+            <strong>行动方案：</strong>
+            <ul>
+                <li>记录触发事件，包括市场讯号、新闻消息或他人意见。</li>
+                <li>分析触发点，辨别哪些能导向正确决策。</li>
+                <li>制定触发点应对策略，保持冷静判断。</li>
+            </ul>
+            <h3>第五章：结果与反思记录——死循环成长</h3>
+            <p>记录不只是写下当下，更重要的是反思。每一次交易得失都是宝贵养分。</p>
+            <strong>行动方案：</strong>
+            <ul>
+                <li>每周回顾交易结果，统整情绪、念头、行为与触发点。</li>
+                <li>分析成功与失败模式，提炼可复制策略。</li>
+                <li>设定下周行动计划，把反思结果落实于实际操作。</li>
+            </ul>
+        </section>
+        <section style="border-left: 5px solid var(--color-action-green);">
+            <h2>30天行动挑战——从记录开始，重启人生</h2>
+            <p>今日起，记录一笔交易的五个维度：情绪、念头、行为、触发点与结果。</p>
+            <p>每周回顾一次，找出至少一个可改进的地方。</p>
+            <p>坚持 30 天，你会明显感受到交易决策的转变，从盲目跟随市场到主动掌控。</p>
+            <blockquote>
+                「掌握自己心智的运作，比掌握市场更重要。」——雷·达里奥<br>
+                「反思是成功快捷方式，每一次错误都应被记录并分析。」——保罗·都铎·琼斯
+            </blockquote>
+        </section>
+        <section>
+            <h2>为什么这套方法值得执行？</h2>
+            <ul>
+                <li>帮助你从情绪驱动转为理性决策。</li>
+                <li>提升绩效，降低心理压力。</li>
+                <li>建立可复制、可持续的交易模式。</li>
+                <li>让你主动掌控人生与市场，而非被动应对。</li>
+            </ul>
+        </section>
+        <section>
+            <h2>推荐工具与技巧</h2>
+            <ul>
+                <li>使用笔记软件（如 Notion、Evernote）或纸本日记。</li>
+                <li>建立简单表格：日期、情绪、念头、行为、触发点、结果。</li>
+                <li>每周固定回顾，标记亮点与改进点。</li>
+                <li>与交易伙伴分享心得，增加外部反馈。</li>
+            </ul>
+        </section>
+        <section>
+            <h2>名句精华</h2>
+            <blockquote>
+                「从交易角度看，成功的秘密在于对信息与知识永不止息的渴求。」——保罗·都铎·琼斯<br>
+                「痛苦加上反思，就会产生进步。」——雷·达里奥<br>
+                「最危险的敌人往往不是市场，而是你无法控制的内心对话。」——艾德温·勒布朗<br>
+                「交易的成功来自于反思与调整，错误是最直接的老师。」——保罗·都铎·琼斯
+            </blockquote>
+        </section>
+    </main>
+    <footer>
+        © 2025 交易心智成长计划｜基于 Brent Penfold、Ray Dalio、Paul Tudor Jones 思想整理
+    </footer>
+</body>
 </html>
