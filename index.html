@@ -5,188 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投资思想与原则 - 作品集 | Exson Art</title>
     <style>
+        /* --- 颜色与字体变量 (紫色、金色、绿色主题) --- */
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-text: #7f8c8d;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --border-color: #e0e0e0;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s ease;
-            --border-radius: 8px;
+            --color-primary: #673AB7;       /* 深紫色：主色、标题、链接 */
+            --color-accent-gold: #FFC107;   /* 金色：强调色、悬停高亮 */
+            --color-action-green: #4CAF50;  /* 绿色：备用强调 */
+            
+            --bg-soft: #fbfaff;             /* 极浅色背景 */
+            --text: #333333;                /* 深色文本 */
+            --muted: #888888;               /* 柔和中灰 */
+            --accent-light: #F3E5F5;        /* 极浅紫色 (用于分隔线和悬停背景) */
+            --font-size-base: 20px;         /* 基础字体 20px */
         }
-
-        * {
-            box-sizing: border-box;
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.8; /* 调整行高适应 20px 字体 */
             margin: 0;
             padding: 0;
+            background-color: var(--bg-soft); /* 柔和主题背景 */
+            color: var(--text); 
+            font-size: var(--font-size-base); /* 应用 20px 基础字体 */
         }
 
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
-        }
-
+        /* 布局容器 */
         .container {
-            max-width: 800px;
+            max-width: 900px; /* 略微放宽宽度 */
             margin: 40px auto;
-            padding: 30px;
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
+            padding: 30px; /* 增加内边距 */
+            background-color: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* 柔和阴影 */
+            border-radius: 12px;
         }
 
-        .container:hover {
-            box-shadow: var(--hover-shadow);
-        }
-
+        /* 头部样式 */
         header {
             text-align: center;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--border-color);
-            position: relative;
+            padding-bottom: 25px;
+            border-bottom: 2px solid var(--accent-light); /* 浅紫分隔线 */
+            margin-bottom: 35px;
         }
-
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--secondary-color);
-        }
-
         header h1 {
-            font-size: 2.4em;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+            font-size: 2.8em; /* 增大标题 */
+            color: var(--color-primary); /* 深紫色标题 */
+            margin-bottom: 8px;
             font-weight: 700;
         }
-
         header p {
-            font-size: 1.1em;
-            color: var(--light-text);
-            font-style: italic;
+            font-size: 1.05em;
+            color: var(--muted); /* 柔和中灰 */
         }
 
+        /* 作品集列表样式 */
         .portfolio-list {
             list-style: none;
             padding: 0;
         }
-
         .portfolio-item {
-            margin-bottom: 15px;
-            padding: 15px 0;
-            border-bottom: 1px dashed var(--border-color);
-            transition: var(--transition);
+            margin-bottom: 10px; /* 调整列表项间距 */
+            border-bottom: 1px dashed var(--accent-light); /* 浅紫虚线分隔 */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* 添加过渡效果 */
+            border-radius: 8px; /* 悬停背景也带圆角 */
         }
-
-        .portfolio-item:hover {
-            transform: translateX(5px);
-        }
-
         .portfolio-item:last-child {
             border-bottom: none;
-            margin-bottom: 0;
+        }
+        
+        /* 关键优化：悬停效果 */
+        .portfolio-item:hover {
+            background-color: var(--accent-light); /* 悬停时整个列表项背景变浅紫 */
+            transform: translateY(-2px); /* 悬停时轻微上浮 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* 悬停时增加柔和阴影 */
         }
 
         .portfolio-item a {
             text-decoration: none;
-            color: var(--primary-color);
-            font-size: 1.2em;
-            font-weight: 500;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: var(--color-primary); /* 深紫色链接 */
+            font-size: 1.3em; /* 列表项字体突出 */
+            font-weight: 600;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 15px 20px; /* 增加链接的内边距，使点击区域更大，与背景更好融合 */
         }
-
         .portfolio-item a:hover {
-            color: var(--accent-color);
+            color: var(--color-accent-gold); /* 悬停时显示金色 */
+            text-decoration: underline;
         }
 
-        .portfolio-item a::before {
-            font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
-            font-size: 1.2em;
-        }
-
-        /* 为每个作品添加独特图标 */
-        .wsgg a::before {
-            content: "👻";
-        }
-        .tps a::before {
-            content: "📜";
-        }
-        .bp13 a::before {
-            content: "🔢";
-        }
-        .upst a::before {
-            content: "🌐";
-        }
-        .rm a::before {
-            content: "📝";
-        }
-        .stoic a::before {
-            content: "🧠";
-        }
-        .tl a::before {
-            content: "⚖️";
-        }
-        .time a::before {
-            content: "⏳";
-        }
-
+        /* 脚注样式 */
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
             padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--light-text);
+            border-top: 1px solid var(--accent-light);
+            color: var(--muted);
             font-size: 0.9em;
         }
-
-        @media (max-width: 768px) {
+        
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            body {
+                font-size: 18px; /* 移动端字体略微缩小 */
+            }
             .container {
-                margin: 20px;
-                padding: 20px;
-            }
-
-            header h1 {
-                font-size: 2em;
-            }
-
-            .portfolio-item a {
-                font-size: 1.1em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                margin: 10px;
+                margin: 20px 10px;
                 padding: 15px;
             }
-
             header h1 {
-                font-size: 1.6em;
+                font-size: 2.2em;
             }
-
-            header p {
-                font-size: 1em;
-            }
-
             .portfolio-item a {
-                font-size: 1em;
+                font-size: 1.1em;
+                padding: 12px 15px; /* 移动端调整内边距 */
             }
         }
     </style>
@@ -197,52 +127,52 @@
             <h1>投资思想与原则</h1>
             <p>—— 专业交易与个人成长作品集</p>
         </header>
-
+        
         <main>
             <ul class="portfolio-list">
-                <li class="portfolio-item wsgg">
+                <li class="portfolio-item">
                     <a href="wsggs.html" target="_blank">
                         WSGG - 华尔街幽灵的礼物
                     </a>
                 </li>
-                <li class="portfolio-item tps">
+                <li class="portfolio-item">
                     <a href="tps.html" target="_blank">
                         TPS - 交易原则
                     </a>
                 </li>
-                <li class="portfolio-item bp13">
+                <li class="portfolio-item">
                     <a href="bp13.html" target="_blank">
                         Brent Penfold 13 条核心交易法则
                     </a>
                 </li>
-                <li class="portfolio-item upst">
+                <li class="portfolio-item">
                     <a href="upst.html" target="_blank">
                         UPST - 成功的交易的普遍原则
                     </a>
                 </li>
-                <li class="portfolio-item rm">
+                <li class="portfolio-item">
                     <a href="rm.html" target="_blank">
                         Record Management - 持续记录自己，可以改变你的交易命运｜从这 5 个记录开始重启人生
                     </a>
                 </li>
-                <li class="portfolio-item stoic">
+                <li class="portfolio-item">
                     <a href="stoic.html" target="_blank">
                         The Daily Stoic 【掌控思想，行动制胜】
                     </a>
                 </li>
-                <li class="portfolio-item tl">
+                <li class="portfolio-item">
                     <a href="tl.html" target="_blank">
                         The Laws of Trading - 市场不欠你任何机会
                     </a>
                 </li>
-                <li class="portfolio-item time">
+                <li class="portfolio-item">
                     <a href="time.html" target="_blank">
                         Time - 时间管理大师
                     </a>
                 </li>
             </ul>
         </main>
-
+        
         <footer>
             <p>&copy; 2025 Exson Art. 版权所有.</p>
         </footer>
